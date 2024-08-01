@@ -1,0 +1,21 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+         int min = Integer.MAX_VALUE; // +infinity store largest value
+        int max=0; // initialize max with zero
+        for(int i=0;i<prices.length;i++){
+          if(prices[i] < min)
+              min = prices[i];
+            else if(prices[i] - min > max)
+                max=prices[i]-min;
+        }
+        return max;
+    }
+}
+
+
+
+*The method initializes min to the largest possible integer and max to 0.
+*It loops through each price in the prices array.
+*For each price, it updates min if the current price is lower than the previous minimum.
+*It calculates the potential profit by selling at the current price and buying at the lowest price seen so far, updating max if this profit is higher than the previously recorded maximum profit.
+*After processing all prices, the method returns the maximum profit found.

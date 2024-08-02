@@ -1,0 +1,16 @@
+public int removeDuplicates(int[] nums) {
+    // Initialize the position to place the next unique element
+    int j = 1;
+
+    // Loop through the array up to the second-to-last element
+    for (int i = 0; i < nums.length - 1; i++) {
+        // Check if the current element is different from the next one
+        if (nums[i] != nums[i + 1]) {
+            // Place the next unique element at the position `j`
+            nums[j++] = nums[i + 1];
+        }
+    }
+
+    // Return the length of the array with unique elements
+    return j;
+}

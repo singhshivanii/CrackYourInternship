@@ -1,0 +1,39 @@
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int i = 0 , j =0; // Initialize two pointers: i for zeroes, j for non-zero elements
+        while(j<nums.length){ // Loop through the array with j
+        // Find the next zero in the array
+            while(i<nums.length && nums[i] != 0){
+                i++;
+            }
+             // If there are no more zeroes, exit the loop
+            if(i== nums.length)
+            break;
+            // Start looking for a non-zero element after the zero found at i
+            j=i+1;
+             // Find the next non-zero element after i
+            while(j<nums.length && nums[j] == 0){
+            j++;
+            }
+            // If there are no more non-zero elements, exit the loop
+            if(j==nums.length) 
+             break;
+             // Swap the zero at i with the non-zero element at j
+            int temp = nums[i]; 
+            nums[i]=nums[j];
+            nums[j]=temp;
+            // Move i to the next position for the next zero to be processed
+            i++;
+        }
+    }
+}
+
+
+
+i and j are used to track positions in the array: i for zeroes, j for non-zero elements.
+The outer loop continues until j has scanned the whole array.
+The first nested loop finds the next zero.
+If no zeroes are left, exit the loop.
+The second nested loop finds the next non-zero element after the zero.
+If no non-zero elements are left to swap, exit the loop.
+Swap the zero with the found non-zero element and move to the next zero.

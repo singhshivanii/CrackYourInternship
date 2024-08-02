@@ -1,0 +1,37 @@
+class Solution {
+    public int findDuplicate(int[] nums) {
+        // approach - mark visited element negative 
+       for(int i=0;i<nums.length;i++) {
+            int ind = Math.abs(nums[i]);
+            if(nums[ind] < 0) {
+                return ind;
+            }
+            nums[ind] = -nums[ind];
+        }
+        return -1;
+
+    }
+}
+
+
+Explanation
+Initialization:
+
+The for loop iterates over each element of the array nums.
+Processing Each Element:
+
+int ind = Math.abs(nums[i]);
+
+Get the absolute value of nums[i]. This is because the value in nums[i] might have been negated in a previous iteration. The absolute value gives us the original index to check.
+if (nums[ind] < 0)
+
+Check if the value at index ind in the array nums is negative. If it is negative, this means we have encountered this index before. Thus, ind is the duplicate number.
+return ind;
+Return ind as it is the duplicate number.
+
+*nums[ind] = -nums[ind];
+
+*If the value at ind is not negative, negate the value at nums[ind]. This marks the index ind as visited. Negating helps us keep track of whether an index has been seen before.
+Completion:
+
+*If no duplicate is found by the end of the loop, return -1 (although in a well-defined problem with exactly one duplicate, this line should never be reached).
